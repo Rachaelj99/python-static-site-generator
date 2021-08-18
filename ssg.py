@@ -2,9 +2,14 @@ import typer
 
 from ssg.site import Site
 
+import ssg.parsers
+
 #a function that captures command line arguments
 def main(source="content", dest="dist"):
-    config = {"source": source, "dest": dest}
+    config = {
+        "source": source,
+        "dest": dest,
+        "parsers": [ssg.parsers.ResourceParser()]}
 
     #creates an instance of 'Site' class
     #2 attributes/args = unpacked dictionary values with **
