@@ -10,7 +10,7 @@ class Content(Mapping):
     @classmethod
     def load(cls, string):
         _, fm, content = cls.__regex.split(string, 2)
-        metedata = load(fm, Loader=FullLoader)
+        metadata = load(fm, Loader=FullLoader)
         return cls(metadata, content)
 
     def __init__(self, metadata, content):
@@ -25,7 +25,7 @@ class Content(Mapping):
     def type(self):
         return self.data["type"] if "type" in self.data else None
 
-    @property
+    @type.setter
     def type(self, type):
         self.data["type"] = type
 
@@ -35,6 +35,9 @@ class Content(Mapping):
 
 
     def __iter__(self):
+        self.data.__iter__()
+
+    def __len__(self):
         return len(self.data)
 
     def __repr__(self):
