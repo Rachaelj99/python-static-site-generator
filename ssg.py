@@ -1,6 +1,6 @@
 import typer
 
-from ssg.site import site
+from ssg.site import Site
 
 #a function that captures command line arguments
 def main(source="content", dest="dist"):
